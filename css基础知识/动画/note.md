@@ -21,3 +21,65 @@ div {
 平时开发时对于一个测试阶段的css属性，正确的书写方式是：
 
 把各浏览器内核支持的带前缀的属性依次全写完，然后最后书写没有前缀的标准属性（我猜应该是方便属性正式加入标准之后进行css样式覆盖吧）
+
+# 过渡属性
+
+## 概述：
+
+![image-20230130155311907](./images/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230130155311907.png)
+
+## 过渡属性
+
+![image-20230130155441662](./images/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230130155441662.png)
+
+## 过渡时间
+
+![image-20230130155534699](./images/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230130155534699.png)
+
+## 过渡函数
+
+![image-20230130155611636](./images/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230130155611636.png)
+
+## 过渡延迟
+
+![image-20230130155816144](./images/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230130155816144.png)
+
+## 简写属性transition
+
+![image-20230130155954863](./images/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230130155954863.png)
+
+* 可以同时设置这四个值，并且**没有次序要求**。
+
+* 只有一个要求：
+
+  * 如果写两个时间 前边的默认是持续时间 后边的是默认时间。
+
+  * 如果写一个时间，这个时间指的是持续时间。
+
+# animation动画
+
+其实动画属性使用起来与transition很相似
+
+简写属性：`animation`，若干个子属性，其中一个是使用的动画，类似于transition中指定的过渡属性，然后还有动画持续时间，动画延迟时间，动画重复次数以及动画函数
+
+子属性也没有次序要求，只是第一个时间一定是动画持续时间
+
+**使用动画之前需要先用@keyframes定义：**
+
+~~~css
+/*
+    定义关键帧动画：
+*/
+@keyframes myAnimation {
+    50% {
+        margin-left: -300px;
+    }
+}
+/*
+    给swiper-item-container使用动画（让它水平移动）
+*/
+#swiper-item-container {
+    an
+~~~
+
+具体案例见：./关键帧动画.html

@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #banner {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        #swiper-item-container {
+            width: 600px;
+        }
+        .item {
+            width: 300px;
+            height: 300px;
+            float: left;
+        }
+        #first {
+            background: url('./关键帧动画相关图片/tb.1.ffef4042.jpeg') no-repeat;
+            background-size: cover;
+        }
+        #second {
+            background: url('./关键帧动画相关图片/头像.jpg') no-repeat;
+            background-size: cover;
+        }
+        /*
+            上面其实就是轮播图的布局基本原理：
+                有一个轮播图容器swiper-item-container，然后里面就是我们想要呈现的图片项目，项目大小相同的情况下，我们让swiper-item-container的宽度为所有项目加起来的宽度
+                各项目左浮动，这样所有的轮播项目就跑到swiper-item-container那一行去了
+                （这里插一嘴，浮动元素虽然脱离了标准流，但是其换行还是根据父元素的宽度决定的，这也就是我们为什么让swiper-item-container宽度为所有项目宽度的和的原因，不然swiper-container不够宽，即使所有项目左浮动也去不了一行）
+                banner相当于轮播图的可视区域，然后banner部分（swiper-item-container的父元素）overflow:hidden即可
+        */
+        /*
+            定义关键帧动画：
+        */
+        @keyframes myAnimation {
+            50% {
+                margin-left: -300px;
+            }
+        }
+        /*
+            给swiper-item-container使用动画（让它水平移动）
+        */
+        #swiper-item-container {
+            animation: 3s infinite 1s myAnimation;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div id="swiper-item-container">
+            <div class="item" id="first"></div>
+            <div class="item" id="second"></div>
+        </div>
+    </div>
+</body>
+</html>
