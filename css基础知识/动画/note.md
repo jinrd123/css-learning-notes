@@ -22,6 +22,14 @@ div {
 
 把各浏览器内核支持的带前缀的属性依次全写完，然后最后书写没有前缀的标准属性（我猜应该是方便属性正式加入标准之后进行css样式覆盖吧）
 
+# 过渡与动画的理解
+
+过渡是由一个状态转变成另一个状态的过程，而动画就是过渡这种状态转变的集合。
+
+transition属性应用于某个元素之后，这时并不会触发效果，需要等待这个元素的样式改变（不管是js操作还是css操作），所以从这种层面上讲过渡是一个待触发的效果。
+
+动画的定义过程中已经包含了各个状态，即状态的变化过程已经定义好了，动画属性应用于某个元素之后，就会直接按照我们设计的效果去执行动画，只是说动画执行时状态变化的过程中会使用过渡效果。所以动画是一种设置及生效的效果。
+
 # 过渡属性
 
 ## 概述：
@@ -79,7 +87,62 @@ div {
     给swiper-item-container使用动画（让它水平移动）
 */
 #swiper-item-container {
-    an
+    animation: 3s infinite 1s myAnimation;
+}
 ~~~
 
 具体案例见：./关键帧动画.html
+
+# Vue动画
+
+## 基本使用
+
+![:Users:jinrongda:Desktop:0f08a69f233d4c1f8ac32da1d7510a66](./images/:Users:jinrongda:Desktop:css学习笔记:css基础知识:关键帧动画相关图片:Users:jinrongda:Desktop:0f08a69f233d4c1f8ac32da1d7510a66.png)
+
+~~~html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<title></title>
+	<style type="text/css">
+		/* 设置持续时间和动画函数 */
+		.v-enter-active,.v-leave-active {
+		  transition: all .8s ease;
+          }
+		.v-enter, .v-leave-to{
+		  transform: translateX(100px);
+		  opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		  <button @click="show = !show">切换</button>
+		  <transition>
+		    <p v-show="show">hello</p>
+		  </transition>
+
+	</div>
+
+	<script type="text/javascript">
+		let vue  = new Vue({
+			el:'#app',
+			data:{
+				show:true,
+			},
+		})
+
+	</script>
+</body>
+</html>
+
+~~~
+
+![7716084cef81488d85b099e69a013160](./images/:Users:jinrongda:Desktop:7716084cef81488d85b099e69a013160.png)
+
+enter阶段对应元素的生成，leave阶段对应元素的消失；
+
+也就是说v-enter、v-enter-to、v-leave、v-leave-to是定义动画过程中结点状态（样式）的，然后v-enter-active会在整个enter阶段生效
