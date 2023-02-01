@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-image: linear-gradient(to right, blue, red 50%, black);
+            border-radius: 10px;
+        }
+        .content {
+            width: 490px;
+            height: 490px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 10px;
+        }
+        .container2 {
+            width: 500px;
+            height: 500px;
+            border-radius: 10px; /*无效*/
+            border: 5px solid;
+            border-image-source: linear-gradient(to right, blue, red 50%, black);
+            border-image-slice: 5 5 5 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">解释：外面一个盒子，用background-image: linear-gradient造出来一个渐变色背景图，然后里面的盒子垂直居中与外面的盒子；这种通过background-image: linear-gradient方法的优点就是能造出来border-radius，比较灵活（设置border-image时border-ridius圆角样式失效）</div>
+    </div>
+    <div class="container2">
+        border+border-image-source+border-image-slice实现原理：border指定使用边框、边框宽度，border-image-source指定一个图片，border-image-slice切割图片，切割线距离四条边（依次是上、右、下、左）的距离，缺点就是无法设置border-radius，优点就是方便
+    </div>
+</body>
+</html>
