@@ -120,7 +120,7 @@ div {
 
 ![image-20230209235012945](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230209235012945.png)
 
-## 适配方案一
+## 基于rem的适配方案一
 
 说白了就是我们针对宽度进行适配，针对一份设计稿，比如750px宽度，我们平均分成若干份，比如分成15份，一份就是50px，我们就设置html的font-size为50px。其实这里html的font-size就是一个全局的参照标准了，而不是说去使用它单纯作为一个字体大小样式。
 
@@ -131,3 +131,34 @@ div {
 ![image-20230210003904995](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210003904995.png)
 
 ![image-20230210004158403](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210004158403.png)
+
+## 案例（针对方案一）
+
+![image-20230210084028380](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210084028380.png)
+
+
+
+![image-20230210084158125](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210084158125.png)
+
+![image-20230210084259839](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210084259839.png)
+
+![image-20230210084334919](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210084334919.png)
+
+![image-20230210083932645](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210083932645.png)
+
+![image-20230210084526039](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210084526039.png)
+
+`min-width`是针对最小的机型的屏幕宽度。其实说白了，配置完媒体查询的css文件，剩下的css样式与平时开发的唯一区别就是所有宽高等长度单位都改成`rem`单位即可。比如：
+
+1. 设计稿是`750px`宽的，我们把屏幕宽度分成15份，其一份大小为html的`font-size`大小——50（只是一个选择，一个决定而已）
+2. less文件中，先定义`@baseFont: 50`
+
+3. 设计稿上一个盒子`width: 70px;`
+
+4. 开发时：`@baseFont: 50;`，`width: 70rem / @baseFont;`
+
+## 基于rem的适配方案二
+
+![image-20230210090346178](./img/:Users:jinrongda:Library:Application Support:typora-user-images:image-20230210090346178.png)
+
+不想学了，原理应该就是这个flexible.js以一种标准（比如手机屏幕划分10等份为html的font-size）自动帮我们给出了媒体查询的css文件，原理还是rem适配原理，用到再说吧。
