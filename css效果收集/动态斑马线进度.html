@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .base-progress {
+            position: relative;
+            width: 300px;
+            height: 14px;
+            border-radius: 7px;
+            border: 1px solid red; 
+        }
+        .base-progress .active-progress {
+            position: absolute; 
+            left: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 150px;
+            height: 14px;
+            border-radius: 7px;
+            background: repeating-linear-gradient(135deg, blue, blue 10px, pink 10px, pink 20px);
+            /* background-size: 28px 14px; */
+            animation: progressAnimation 1s linear infinite;
+        }
+
+        @keyframes progressAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 28px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="base-progress">
+        <div class="active-progress">
+
+        </div>
+    </div>
+</body>
+</html>
