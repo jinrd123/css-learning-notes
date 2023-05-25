@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .toBottom {
+            width: 0px;
+            height: 0px;
+            border-top: 50px solid skyblue;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+        }
+        .borderTest {
+            width: 15px;
+            height: 15px;
+            border-top: 100px solid skyblue;
+            border-left: 100px solid rgb(60, 192, 56);
+            border-bottom: 100px solid rgb(148, 61, 24);
+            border-right: 100px solid rgb(150, 186, 106);
+        }
+    </style>
+</head>
+<body>
+    <div class="toBottom"></div>
+    <div class="borderTest"></div>
+    要画三角形其实很简单，只需要理解div的border是什么样子的的可以
+    <ul>
+        <li>div是一个方块，加上border仍然要保证它是一个方块</li>
+        <li>具体描述清楚了，运行一下这个代码看一下borderTest方块是啥样就清晰了</li>
+        <li>实现三角形，只需要让div的宽高都为0，然后只保留border即可</li>
+        <li>反向描述一下一个带有border的div是什么样子的，首先一个正方形代表div整体（包括border），以正方形的每条边为斜边向内作等腰直角三角形，四个直角汇聚于一点</li>
+        <li>然后border内部的方块部分以正方形的中心点为中心点，生成对应div宽高的方块作为border以内的盒子部分</li>
+    </ul>
+</body>
+</html>
